@@ -148,29 +148,27 @@
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class=" nav-link" data-bs-toggle="dropdown">
 
-                        <span class="user-img"><img src="{{ Auth::user()->profile_photo_url }}" class="rounded-circle"
-                                alt="" style="transform: scale(0.6)"></span>
+                        <span class="user-img"><img src="{{ Auth::guard('student')->user()->profile_photo_url }}"
+                                class="rounded-circle" alt="" style="transform: scale(0.6)"></span>
 
                     </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="{{ Auth::user()->profile_photo_url }}" alt="User Image"
+                                <img src="{{Auth::guard('student')->user()->profile_photo_url }}" alt="User Image"
                                     class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
-                                <h6>{{ auth()->user()->name }}</h6>
+                                <h6>{{ Auth::guard('student')->user()->name }}</h6>
                                 <p class="text-muted mb-0">Administrator</p>
                             </div>
                         </div>
-                        <x-jet-dropdown-link href="{{ route('profile.show') }}" class="dropdown-item">
-                            {{ __('My Profile') }}
-                        </x-jet-dropdown-link>
+                        <a href="#" class="dropdown-item">My Profile</a>
 
                         {{-- <a class="dropdown-item" href="inbox.html">Inbox</a> --}}
                         {{-- <a class="dropdown-item" href="login.html">Logout</a> --}}
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('admin.logout') }}">
+                        <form method="POST" action="{{ route('student.logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item">Logout</button>
                         </form>

@@ -3,10 +3,10 @@
         Student
     </x-slot>
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('student.login') }}">
         @csrf
         <div class="form-group">
-            <input class="form-control" name="email" type="text" placeholder="Email">
+            <input class="form-control" name="phone" type="text" placeholder="Phone">
         </div>
         <div class="form-group">
             <input class="form-control" name="password" type="text" placeholder="Password">

@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +19,18 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+//*STUDENT LOGIN ROUTE
+Route::POST('/student-login', [LoginController::class, 'studentLogin'])->name('student.login');
+Route::name('student.')->middleware('isStudent')->group(function () {
+    //*LogOut Student Dashboard
+    Route::post('/logout', function () {
+        Auth::guard('student')->logout();
+        return redirect()->route('login');
+    })->name('logout');
+
+
+    //*Dashboard Route For Student
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('auth.students.dashboard');
     })->name('dashboard');
 });
