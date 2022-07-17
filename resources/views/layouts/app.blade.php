@@ -31,10 +31,10 @@
         <div class="header">
 
             <div class="header-left">
-                <a href="index.html" class="logo">
+                <a href="{{ route('admin.dashboard') }}" class="logo">
                     <img src="{{ asset('backend/assets/img/logo.png') }}" alt="Logo">
                 </a>
-                <a href="index.html" class="logo logo-small">
+                <a href="{{ route('admin.dashboard') }}" class="logo logo-small">
                     <img src="{{ asset('backend/assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
                 </a>
             </div>
@@ -190,8 +190,9 @@
                             <span>Main Menu</span>
                         </li>
 
-                        <li>
-                            <a href="index.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
+                        <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                            <a href="{{ route('admin.dashboard') }}"><i
+                                    class="fas fa-user-graduate"></i><span>Dashboard</span></a>
                         </li>
 
                         <li class="menu-title ">
@@ -207,7 +208,7 @@
                                 <li><a href="error-404.html">Error Page</a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
                         </li>
 
