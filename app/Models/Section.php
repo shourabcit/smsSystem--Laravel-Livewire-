@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Permission;
 
 class Section extends Model
 {
@@ -18,5 +19,10 @@ class Section extends Model
     public function module()
     {
         return $this->belongsTo(Module::class);
+    }
+
+    public function allPermissions()
+    {
+        return $this->hasMany(Permission::class);
     }
 }
